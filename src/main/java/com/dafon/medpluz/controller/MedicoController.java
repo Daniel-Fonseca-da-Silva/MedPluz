@@ -8,6 +8,8 @@ import com.dafon.medpluz.repository.MedicoRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,8 +29,8 @@ public class MedicoController {
     }
 
     @GetMapping()
-    public List<DadosListagemMedicoDto> listar() {
-        return repository.findAll().stream().map(DadosListagemMedicoDto::new).toList();
+    public Page<DadosListagemMedicoDto> listar(Pageable paginacao) {
+        return repository.findAll(paginacao).map(DadosListagemMedicoDto::new);
     }
 
 }
