@@ -1,5 +1,6 @@
 package com.dafon.medpluz.controller;
 
+import com.dafon.medpluz.controller.dto.DadosAtualizaMedicoDto;
 import com.dafon.medpluz.controller.dto.DadosCadastroMedicoDto;
 import com.dafon.medpluz.controller.dto.DadosListagemMedicoDto;
 import com.dafon.medpluz.model.Endereco;
@@ -32,6 +33,13 @@ public class MedicoController {
     @GetMapping()
     public Page<DadosListagemMedicoDto> listar(@PageableDefault(size = 2, sort = {"nome"}) Pageable paginacao) {
         return repository.findAll(paginacao).map(DadosListagemMedicoDto::new);
+    }
+
+    @PutMapping()
+    @Transactional()
+    public void atualizar(@RequestBody @Valid DadosAtualizaMedicoDto dados) {
+        var medico = repository.getReferenceById(dados.id());
+        medico.atualizarInformacoes(dados);
     }
 
 }
