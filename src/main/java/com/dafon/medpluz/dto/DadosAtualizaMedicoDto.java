@@ -1,4 +1,4 @@
-package com.dafon.medpluz.controller.dto;
+package com.dafon.medpluz.dto;
 
 import jakarta.validation.constraints.NotNull;
 

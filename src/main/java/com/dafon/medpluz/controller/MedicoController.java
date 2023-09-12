@@ -1,8 +1,6 @@
 package com.dafon.medpluz.controller;
 
-import com.dafon.medpluz.controller.dto.DadosAtualizaMedicoDto;
-import com.dafon.medpluz.controller.dto.DadosCadastroMedicoDto;
-import com.dafon.medpluz.controller.dto.DadosListagemMedicoDto;
+import com.dafon.medpluz.dto.*;
 import com.dafon.medpluz.model.Medico;
 import com.dafon.medpluz.repository.MedicoRepository;
 import jakarta.transaction.Transactional;
@@ -29,7 +27,7 @@ public class MedicoController {
 
     @GetMapping()
     public Page<DadosListagemMedicoDto> listar(@PageableDefault(size = 2, sort = {"nome"}) Pageable paginacao) {
-        return repository.findAll(paginacao).map(DadosListagemMedicoDto::new);
+        return repository.findAllByAtivoTrue(paginacao).map(DadosListagemMedicoDto::new);
     }
 
     @PutMapping()
@@ -42,7 +40,8 @@ public class MedicoController {
     @DeleteMapping("/{id}")
     @Transactional()
     public void excluir(@PathVariable Long id) {
-        repository.deleteById(id);
+        var medico = repository.getReferenceById(id);
+        medico.excluir();
     }
 
 }

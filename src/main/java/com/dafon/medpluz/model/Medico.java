@@ -1,8 +1,8 @@
 package com.dafon.medpluz.model;
 
-import com.dafon.medpluz.controller.dto.DadosAtualizaMedicoDto;
-import com.dafon.medpluz.controller.dto.DadosCadastroMedicoDto;
-import com.dafon.medpluz.controller.enums.Especialidade;
+import com.dafon.medpluz.dto.DadosAtualizaMedicoDto;
+import com.dafon.medpluz.dto.DadosCadastroMedicoDto;
+import com.dafon.medpluz.enums.Especialidade;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -20,6 +20,7 @@ public class Medico {
     private String email;
     private String telefone;
     private String crm;
+    private Boolean ativo;
 
     @Enumerated(EnumType.STRING)
     private Especialidade especialidade;
@@ -28,6 +29,7 @@ public class Medico {
     private Endereco endereco;
 
     public Medico(DadosCadastroMedicoDto dados) {
+        this.ativo = true;
         this.nome = dados.nome();
         this.email = dados.email();
         this.telefone = dados.telefone();
@@ -43,5 +45,9 @@ public class Medico {
             this.telefone = dados.telefone();
         if (dados.endereco() != null)
             this.endereco.atualizarInformacoes(dados.endereco());
+    }
+
+    public void excluir() {
+        this.ativo = false;
     }
 }

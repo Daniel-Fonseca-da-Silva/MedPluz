@@ -1,10 +1,8 @@
 package com.dafon.medpluz.model;
 
-import com.dafon.medpluz.controller.dto.DadosEnderecoDto;
+import com.dafon.medpluz.dto.DadosEnderecoDto;
 import jakarta.persistence.Embeddable;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Embeddable
 @Getter

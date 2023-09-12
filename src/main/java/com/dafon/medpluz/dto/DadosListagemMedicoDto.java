@@ -1,6 +1,6 @@
-package com.dafon.medpluz.controller.dto;
+package com.dafon.medpluz.dto;
 
-import com.dafon.medpluz.controller.enums.Especialidade;
+import com.dafon.medpluz.enums.Especialidade;
 import com.dafon.medpluz.model.Medico;
 
 public record DadosListagemMedicoDto (Long id, String nome, String telefone, String email, String crm, Especialidade especialidade)
