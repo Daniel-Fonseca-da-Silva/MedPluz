@@ -1,6 +1,6 @@
-package com.dafon.medpluz.controller.dto;
+package com.dafon.medpluz.dto;
 
-import com.dafon.medpluz.controller.enums.Especialidade;
+import com.dafon.medpluz.enums.Especialidade;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 
