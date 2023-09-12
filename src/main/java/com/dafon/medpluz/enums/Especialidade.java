@@ -1,4 +1,4 @@
-package com.dafon.medpluz.controller.enums;
+package com.dafon.medpluz.enums;
 
 public enum Especialidade {
     ORTOPEDIA,
